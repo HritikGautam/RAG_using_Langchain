@@ -87,13 +87,6 @@ if st.button("Process"):
         docs = loader.load()
         docs = docs[2:5] # Limit to pages from 3 to 5 for testing
 
-
-    # Making embeddings
-
-    st.session_state.embeddings = HuggingFaceInferenceAPIEmbeddings(api_key=hf_token, 
-                                                                    model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-    # st.session_state.embeddings = OllamaEmbeddings(model="llama3.2")
     
     # Text Splitting
 
@@ -102,12 +95,20 @@ if st.button("Process"):
         chunk_overlap=200
     )
 
-    #Here we are limiting the number of documents/chunks "[:20]" to be processed to 20 to reduce processing time.
+    # Above we are limiting the number of documents/chunks "[:20]" to be processed to 20 to reduce processing time.
     # Suppose if a URL have only one page but it is too long, then it will be similar to creating chunks for more number of pages.
     # As we reduced the number of pages/docs earlier for pdf to create embeddings faster, we are limiting the number of chunks to be 
     # processed to 20 here to reduce processing time. You can increase it as per your requirement and system capabilities.
     
     final_documents = st.session_state.text_splitter.split_documents(docs)[:20]
+
+    # Making embeddings
+    
+    st.session_state.embeddings = HuggingFaceInferenceAPIEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        api_key=hf_token
+    )
+    # st.session_state.embeddings = OllamaEmbeddings(model="llama3.2")
 
 
     # Vector Store Creation
