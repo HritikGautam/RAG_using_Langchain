@@ -22,7 +22,7 @@ Question to be asked to the llm:- "What is the growth rate of data science jobs?
 '''
 load_dotenv()
 groq_api_key = os.environ['GROQ_API_KEY']
-hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN") # Hugging face token
+hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"] # Hugging face token
 
 #Title of the app
 st.title("RAG App (URL/PDF)")
