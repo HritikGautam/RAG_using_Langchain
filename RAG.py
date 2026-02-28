@@ -10,7 +10,7 @@ from langchain_classic.chains.combine_documents.stuff import create_stuff_docume
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_classic.chains import create_retrieval_chain
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceInferenceAPIEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from dotenv import load_dotenv
 
 ''' Important info:- 
