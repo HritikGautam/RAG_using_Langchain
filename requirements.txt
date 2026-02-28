@@ -12,3 +12,4 @@ langchain
 pypdf
 faiss-cpu
 groq
+langchain-huggingface
