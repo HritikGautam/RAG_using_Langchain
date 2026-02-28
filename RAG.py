@@ -1,6 +1,6 @@
 # Imports
 import streamlit as st
-import os
+# import os
 import time
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import WebBaseLoader, PyPDFLoader
@@ -21,7 +21,7 @@ GROQ LLM model :- groq/compound
 Question to be asked to the llm:- "What is the growth rate of data science jobs?"
 '''
 load_dotenv()
-groq_api_key = os.environ['GROQ_API_KEY']
+groq_api_key = st.secrets['GROQ_API_KEY']
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"] # Hugging face token
 
 #Title of the app
