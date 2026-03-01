@@ -111,6 +111,11 @@ if st.button("Process"):
     )
     # st.session_state.embeddings = OllamaEmbeddings(model="llama3.2")
 
+    test_res = st.session_state.embeddings.embed_query("test")
+    st.write(f"Embedding check: {'✅ Success' if test_res else '❌ EMPTY'}")
+    if not test_res: 
+        st.stop()
+
     # --- DEBUG CHECK ---
     st.write(f"1. Raw Docs Loaded: {len(docs)}")
     st.write(f"2. Final Chunks Created: {len(final_documents)}")
