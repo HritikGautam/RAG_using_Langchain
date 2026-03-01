@@ -106,8 +106,9 @@ if st.button("Process"):
     # Making embeddings
     
     st.session_state.embeddings = HuggingFaceInferenceAPIEmbeddings(
+        api_key=hf_token,
         model_name="sentence-transformers/all-MiniLM-L6-v2",
-        api_key=hf_token
+        additional_headers={"X-Wait-For-Model": "true"}
     )
     # st.session_state.embeddings = OllamaEmbeddings(model="llama3.2")
 
