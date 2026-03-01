@@ -10,17 +10,19 @@ from langchain_classic.chains.combine_documents.stuff import create_stuff_docume
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_classic.chains import create_retrieval_chain
 from langchain_community.vectorstores import FAISS
-# from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 
+st.write(
 ''' Important info:- 
 To run this project, please use the "Data Science Syllabus" PDF, because I have limited the 
-number of pages to be processed from the PDF to 3 to reduce processing time(Line 82).
-Embeddings model :- Ollama's Llama 3.2
+number of pages to be processed from the PDF to 3 to reduce processing time(Line 88).
+Embeddings model :- sentence-transformers/all-MiniLM-L6-v2
 GROQ LLM model :- groq/compound
 Question to be asked to the llm:- "What is the growth rate of data science jobs?"
 '''
+)
+
 load_dotenv()
 groq_api_key = st.secrets['GROQ_API_KEY']
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"] # Hugging face token
@@ -157,8 +159,6 @@ Question:
 # User question is asked
 
 user_question = st.text_input("Ask Question")
-
-
 
 # User question is processed
 
