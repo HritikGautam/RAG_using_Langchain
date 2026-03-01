@@ -101,7 +101,7 @@ if st.button("Process"):
     # processed to 20 here to reduce processing time. You can increase it as per your requirement and system capabilities.
     
     final_documents = st.session_state.text_splitter.split_documents(docs)[:20]
-    print(len(final_documents))
+   
 
     # Making embeddings
     
@@ -111,7 +111,13 @@ if st.button("Process"):
     )
     # st.session_state.embeddings = OllamaEmbeddings(model="llama3.2")
 
+    # --- DEBUG CHECK ---
+    st.write(f"1. Raw Docs Loaded: {len(docs)}")
+    st.write(f"2. Final Chunks Created: {len(final_documents)}")
 
+    if not final_documents:
+        st.error("❌ STOPPING: 'final_documents' is empty. FAISS will crash if we continue.")
+        st.stop()
     # Vector Store Creation
 
     vectors = FAISS.from_documents(
