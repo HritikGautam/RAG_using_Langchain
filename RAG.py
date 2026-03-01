@@ -1,10 +1,10 @@
 # Imports
-import streamlit as st
 # import os
+# from langchain_community.embeddings import OllamaEmbeddings
+import streamlit as st
 import time
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import WebBaseLoader, PyPDFLoader
-# from langchain_community.embeddings import OllamaEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_classic.chains.combine_documents.stuff import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
@@ -15,8 +15,9 @@ from dotenv import load_dotenv
 
 st.write(
 ''' Important info:- 
-To run this project, please use the "Data Science Syllabus" PDF, because I have limited the 
-number of pages to be processed from the PDF to 3 to reduce processing time(Line 88).
+To ask questions, please use the "Data Science Syllabus" PDF, because I have used this specific pdf
+for demonstration and I have limited the number of pages to be processed 
+from the PDF to 3 to reduce processing time(Line 88).
 Embeddings model :- sentence-transformers/all-MiniLM-L6-v2
 GROQ LLM model :- groq/compound
 Question to be asked to the llm:- "What is the growth rate of data science jobs?"
